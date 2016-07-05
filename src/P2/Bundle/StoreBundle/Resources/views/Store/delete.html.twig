@@ -1,0 +1,42 @@
+{% extends '::backend.html.twig' %}
+
+{% block toolbarwrapper %}
+{% endblock %}
+
+{% block desktop -%}
+
+		<!--modal-->
+		<div class="modal fade" id="storeModalConfirm">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <a type="button" href="{{ path('store') }}" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
+		        <h4 class="modal-title">Confirmation</h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>Are you sure you want to delete store '<label> {{ entity.name }} </label>' ?</p>
+		      </div>
+		      <div class="modal-footer">
+
+			      <form action="{{ path('store_delete', {'id': entity.id}) }}" method="post" {{ form_enctype(delete_form) }}>
+			        <!--Cancel-->
+			        {# FIXME -- this needs to be improved, when "No" is selected user should be redirected to previous page, not to "store, this way, maybe performance can be improved as well" #}
+			        <a type="button" class="btn btn-default" href="{{ path('store') }}">No</a>
+			        <!--Delete-->
+			        {{ form_widget(delete_form.submit, { 'attr': {
+			        'class'	: 'btn btn-danger'
+			        }}) }}
+
+			      </form>
+
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<!--modifying data in modal window-->
+		<script type="text/javascript">
+		    $('#storeModalConfirm').modal('toggle')
+		</script>	
+
+{% endblock %}

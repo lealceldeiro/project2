@@ -1,0 +1,88 @@
+{% extends 'P2StoreBundle:Store:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        Details
+    </li>
+{% endblock %}
+
+{% block desktop -%}
+
+    {#flashbag messges #}
+    {{ include('P2StoreBundle:Includes:flashbag.html.twig') }}
+
+    {# header and option for editting and deletting store #}
+    <div class="row">
+
+    <div class="col-md-6">
+        <h3>{{ entity.name }}</h3>
+    </div>
+
+    <div class="col-md-6 margin-top-more">
+    {# back #}
+    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('store') }}">Back to list</a>
+    {# edit #}
+    <a type="button" class="btn btn-sm btn-primary margin-right-more" href="{{ path('store_edit', { 'id': entity.id }) }}">Edit</a>
+    {# delete #}
+    <a type="button" class="btn btn-sm btn-danger margin-right-more" href="{{ path('store_show_delete', { 'id': entity.id }) }}">Delete</a>
+    </div>
+    </div>
+
+    <div class="row margin-left-more">
+        <p><strong>Id: </strong>{{ entity.id }}</p>
+    </div>
+
+     <div class="row margin-left-more">
+        <p><strong>Store user: </strong> {{ entity.storeUser }}</p>
+    </div>
+
+    <div class="row margin-left-more">
+        <p><strong>Amount of users: </strong> {{ entity.users|length }}</p>
+    </div>
+
+    {% if entity.users is not empty %}
+    <div class="row margin-left-more">
+        <label>Users list:</label>
+        <table class="table table-condensed table-striped table-hover p2datatable">
+            <thead>
+                <tr>
+                {#2#}<th>Username</th>
+                {#3#}<th class="hidden-xs hidden-sm hidden-md">Full name</th>
+                {#5#}<th class="hidden-xs hidden-sm hidden-md">User type</th>
+                {#8#}<th class="hidden-xs hidden-sm">Active</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in entity.users %}
+                <tr>
+                {# 2 -- USERNAME #}
+                    <td>
+                        {% set route_show = user_type ~ "_show"%} {# get specific show route, i.e.: customer_show #}
+                        <a data-toggle="tooltip" title="Show details" href="{{ path(route_show, { 'id': user.id }) }}">{{ user.username }}</a>
+                    </td>
+                {# 3 -- FULL NAME #}
+                    <td class="hidden-xs hidden-sm hidden-md">
+                        {{ user.firstName ~ ' ' ~ user.middleName ~ ' ' ~ user.lastname}}
+                    </td>
+                {# 5 -- User Type #}
+                    <td class="hidden-xs hidden-sm hidden-md">
+                        {{ user.getType }}
+                    </td>
+                {# 8 -- ACTIVE? #}
+                    <td class="hidden-xs hidden-sm">
+                    {% set active = user.active ? "Yes": "No" %}
+                    {{ active }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% endblock %}
+
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block role '' %}

@@ -1,0 +1,74 @@
+{% extends 'P2RoleBundle:Role:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        Edit
+    </li>
+{% endblock %}
+
+{% block desktop -%}
+
+	{#flashbag messges #}
+	{{ include('P2RoleBundle:Includes:flashbag.html.twig') }}
+
+	{{ form_start(edit_form, { 'attr': {'role': 'form', 'class': 'form-horizontal', 'novalidate': 'novalidate' }} ) }}
+
+    <div>
+    {# back #}
+    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('role') }}">Back to list</a>
+
+    {# submit #}
+	  {{ form_label(edit_form.submit) }}
+	  {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn btn-sm btn-primary margin-right-more'} }) }}
+
+	{# delete #}
+    	<a type="button" class="btn btn-sm btn-danger margin-right-more" href="{{ path('role_show_delete', { 'id': entity.id }) }}">Delete</a>
+
+	  {# active? #} 
+	    {{ form_label(edit_form.active) }}
+	    {{ form_widget(edit_form.active) }}
+
+    </div>
+
+    {# role label#}
+    				{% if (form_errors(edit_form.label)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less margin-top-more" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.label) }}
+					</div>
+					{% endif %}
+
+	  <div class="form-group {% if (form_errors(edit_form.label)) %} has-error {% endif %}">
+	  	{{ form_label(edit_form.label) }}
+	  	<div class="col-sm-10 margin-top-more">
+	  		{{ form_widget(edit_form.label) }}
+	  	</div>
+	  </div>
+
+	{# role description#}
+					{% if (form_errors(edit_form.description)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.description) }}
+					</div>
+					{% endif %}
+	  <div class="form-group {% if (form_errors(edit_form.description)) %} has-error {% endif %}">
+	  {{ form_label(edit_form.description) }}
+	  <div class="col-sm-10 margin-top-more">
+	  	{{ form_widget(edit_form.description) }}
+	  </div>
+	  </div>
+
+	{{ form_end(edit_form) }}
+
+{% endblock %}
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block home '' %}
+{% block role '' %}

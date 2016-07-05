@@ -1,0 +1,277 @@
+{% extends 'P2UserBundle:Default:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        New
+    </li>
+{% endblock %}
+
+{% block desktop -%}
+
+	{#flashbag messges #}
+	{{ include('P2UserBundle:Includes:flashbag.html.twig') }}
+   
+    {{ form_start(edit_form, { 'attr': {'role': 'form', 'class': 'form-horizontal'}} ) }}
+
+	{# buttons #}
+    <div>
+	    {# back #}
+	    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('administrator') }}">Back to list</a>
+
+	    {# submit #}
+		  {{ form_label(edit_form.submit) }}
+		  {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn btn-sm btn-primary margin-right-more'} }) }}
+
+		  {# delete #}
+    		<a type="button" class="btn btn-sm btn-danger margin-right-more" href="{{ path('administrator_show_delete', { 'id': entity.id }) }}">
+    		Delete
+    		</a>
+
+		  {# active? #} 
+		  {{ form_label(edit_form.active) }}
+		  {{ form_widget(edit_form.active) }}
+    </div>
+
+    <div class="row margin-top-more">
+
+	    <!--left column-->
+	    <div class="col-sm-4">
+			
+
+		    {# username #}
+		    		{% if (form_errors(edit_form.username)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less margin-top-more" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.username) }}
+					</div>
+					{% endif %}
+
+			  <div class="form-group {% if (form_errors(edit_form.username)) %} has-error {% endif %}">
+				{{ form_label(edit_form.username) }}
+				<div class="col-sm-10">
+					{{ form_widget(edit_form.username) }}
+				</div>
+			  </div>
+
+			{# password #}
+					{% if (form_errors(edit_form.password.first)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.password.first) }}
+					</div>
+					{% endif %}
+
+			  <div class="form-group {% if (form_errors(edit_form.password.first)) %} has-error {% endif %}">
+				  {{ form_label(edit_form.password.first) }}
+					<div class="col-sm-10">
+				  		{{ form_widget(edit_form.password.first) }}
+				  	</div>
+					  {{ form_label(edit_form.password.second) }}
+					  <div class="col-sm-10 margin-top-more">
+					  	{{ form_widget(edit_form.password.second) }}
+				  </div>
+			  	  
+			  </div>
+
+			{# email #}
+					{% if (form_errors(edit_form.email)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.email) }}
+					</div>
+					{% endif %}
+
+			<div class="form-group {% if (form_errors(edit_form.email)) %} has-error {% endif %}">
+				{{ form_label(edit_form.email) }}
+				<div class="col-sm-10">
+					{{ form_widget(edit_form.email) }}
+				</div>
+			</div>
+
+			{# Firstname #}
+					{% if (form_errors(edit_form.firstName)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.firstName) }}
+					</div>
+					{% endif %}
+
+			<div class="form-group {% if (form_errors(edit_form.firstName)) %} has-error {% endif %}">
+				{{ form_label(edit_form.firstName) }}
+				<div class="col-sm-10">
+					{{ form_widget(edit_form.firstName) }}
+				</div>
+			</div>
+
+			{# Lastname #}
+					{% if (form_errors(edit_form.lastname)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.lastname) }}
+					</div>
+					{% endif %}
+
+			<div class="form-group {% if (form_errors(edit_form.lastname)) %} has-error {% endif %}">
+				{{ form_label(edit_form.lastname) }}
+				<div class="col-sm-10">
+					{{ form_widget(edit_form.lastname) }}
+				</div>
+			</div>
+
+			{% block left_column %} {# user's specific content here#} {% endblock %}
+
+		</div>	
+
+		<!--right column -->
+		<div class="col-sm-8">
+
+			<!--first-->
+			<div class="col-sm-6">
+
+				{# Middlename #}
+					{% if (form_errors(edit_form.middleName)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.middleName) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(edit_form.middleName)) %} has-error {% endif %}">
+					{{ form_label(edit_form.middleName) }}
+					<div class="col-sm-10">
+						{{ form_widget(edit_form.middleName) }}
+					</div>
+				</div>
+
+				{# DNI #}
+					{% if (form_errors(edit_form.dni)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.dni) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(edit_form.dni)) %} has-error {% endif %}">
+					{{ form_label(edit_form.dni) }}
+					<div class="col-sm-10">
+						{{ form_widget(edit_form.dni) }}
+					</div>
+				</div>
+
+				{# Date of birth #}
+					{% if (form_errors(edit_form.dateOfBirth)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.dateOfBirth) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(edit_form.dateOfBirth)) %} has-error {% endif %}">
+					{{ form_label(edit_form.dateOfBirth) }}
+					<div class="col-sm-10">
+						{{ form_widget(edit_form.dateOfBirth, { 'attr': {'id': 'date_of_birth'}} ) }}
+					</div>
+				</div>
+
+					{% if (form_errors(edit_form.address)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.address) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(edit_form.address)) %} has-error {% endif %}">
+					{{ form_label(edit_form.address) }}
+					<div class="col-sm-10">
+						{{ form_widget(edit_form.address) }}
+					</div>
+				</div>
+
+				{# PICTURE #}
+					{% if (form_errors(edit_form.pictureFile)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.pictureFile) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(edit_form.pictureFile)) %} has-error {% endif %}">
+					{{ form_label(edit_form.pictureFile) }}
+					<div class="col-sm-10">
+						{{ form_widget(edit_form.pictureFile) }}
+						<p class="help-block pull-right input-short">Click here to choose an image from your computer.</p>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<!--second-->
+			<div class="col-sm-6"> 
+				
+					{# Roles #}
+
+					{% if (form_errors(edit_form.roles)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(edit_form.roles) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(edit_form.roles)) %} has-error {% endif %}">
+					{{ form_label(edit_form.roles) }}
+					<div class="col-sm-10">
+						{{ form_widget(edit_form.roles) }}
+					</div>
+				</div>				
+			</div>
+
+				{% block right_column %} {# user's specific content here#} {% endblock %}
+		</div>
+
+	</div>
+
+	{# buttons #}
+    <div>
+	    {# back #}
+	    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('administrator') }}">Back to list</a>
+
+	    {# submit #}
+		{{ form_label(edit_form.submit2) }}
+		{{ form_widget(edit_form.submit2, { 'attr': {'class': 'btn btn-sm btn-primary'} }) }}
+
+		{# delete #}
+    	<a type="button" class="btn btn-sm btn-danger margin-left-more" href="{{ path('administrator_show_delete', { 'id': entity.id }) }}">Delete</a>
+    </div>
+
+	{{ form_end(edit_form) }}
+
+{% endblock %}
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block user '' %}

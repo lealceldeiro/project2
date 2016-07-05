@@ -1,0 +1,4 @@
+services:
+#    p2_general.example:
+#        class: P2\Bundle\GeneralBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

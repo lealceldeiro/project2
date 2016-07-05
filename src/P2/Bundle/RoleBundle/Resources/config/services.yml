@@ -1,0 +1,4 @@
+services:
+#    p2_role.example:
+#        class: P2\Bundle\RoleBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

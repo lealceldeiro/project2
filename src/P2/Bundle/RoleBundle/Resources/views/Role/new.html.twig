@@ -1,0 +1,73 @@
+{% extends 'P2RoleBundle:Role:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        New
+    </li>
+{% endblock %}
+
+{% block toolbarwrapper %}
+{% endblock %}
+
+{% block desktop -%}
+
+	{#flashbag messges #}
+	{{ include('P2RoleBundle:Includes:flashbag.html.twig') }}
+   
+    {{ form_start(form, { 'attr': {'role': 'form', 'class': 'form-horizontal'}} ) }}
+
+    <div>
+    {# back #}
+    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('role') }}">Back to list</a>
+
+    {# submit #}
+	  {{ form_label(form.submit) }}
+	  {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-sm btn-primary margin-right-more'} }) }}
+
+	  {# active? #} 
+	    {{ form_label(form.active) }}
+	    {{ form_widget(form.active) }}
+
+    </div>
+
+    {# role label#}
+    				{% if (form_errors(form.label)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less margin-top-more" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.label) }}
+					</div>
+					{% endif %}
+
+	  <div class="form-group {% if (form_errors(form.label)) %} has-error {% endif %}">
+	  	{{ form_label(form.label) }}
+	  	<div class="col-sm-10 margin-top-more">
+	  		{{ form_widget(form.label) }}
+	  	</div>
+	  </div>
+
+	{# role description#}
+					{% if (form_errors(form.description)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.description) }}
+					</div>
+					{% endif %}
+	  <div class="form-group {% if (form_errors(form.description)) %} has-error {% endif %}">
+	  {{ form_label(form.description) }}
+	  <div class="col-sm-10 margin-top-more">
+	  	{{ form_widget(form.description) }}
+	  </div>
+	  </div>
+
+	{{ form_end(form) }}
+
+{% endblock %}
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block role '' %}

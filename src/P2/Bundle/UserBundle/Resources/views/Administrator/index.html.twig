@@ -1,0 +1,12 @@
+{% extends 'P2UserBundle:Default:index.html.twig' %}
+
+{% block new %} New Administrator {% endblock %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li {% block admin 'class="active"' %}>
+        Administrator
+    </li>
+{% endblock %}
+
+{% block user '' %}

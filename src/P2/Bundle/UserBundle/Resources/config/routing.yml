@@ -1,0 +1,14 @@
+p2_user_administrator:
+    resource: "@P2UserBundle/Resources/config/routing/administrator.yml"
+    prefix:   /admin/administrator
+
+user_index:
+    path:     /index
+    defaults: { _controller: P2UserBundle:Default:index }
+
+#for loading addresses asyncronically in text area
+addresses_autocomplete_ajax:
+    path:     /autocomplete
+    defaults: { _controller: P2UserBundle:Default:autocomplete }
+    options:
+        expose: true

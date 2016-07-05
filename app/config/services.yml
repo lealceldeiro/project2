@@ -1,0 +1,6 @@
+services:
+#    twig.extension.p2:
+#        class: P2\Bundle\GeneralBundle\Twig\Extension\LinkHelperExtension
+#        tags:
+#            - { name: twig.extension }
+            # UNUSED the above line

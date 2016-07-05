@@ -1,0 +1,34 @@
+store:
+    path:     /
+    defaults: { _controller: "P2StoreBundle:Store:index" }
+
+store_show:
+    path:     /{id}/show
+    defaults: { _controller: "P2StoreBundle:Store:show" }
+
+store_new:
+    path:     /admin/new
+    defaults: { _controller: "P2StoreBundle:Store:new" }
+
+store_create:
+    path:     /admin/create
+    defaults: { _controller: "P2StoreBundle:Store:create" }
+    methods:  POST
+
+store_edit:
+    path:     /admin/{id}/edit
+    defaults: { _controller: "P2StoreBundle:Store:edit" }
+
+store_update:
+    path:     /admin/{id}/update
+    defaults: { _controller: "P2StoreBundle:Store:update" }
+    methods:  [POST, PUT]
+
+store_show_delete:
+    path:     /admin/{id}/showdelete
+    defaults: { _controller: "P2StoreBundle:Store:showDelete" }
+
+store_delete:
+    path:     /admin/{id}/delete
+    defaults: { _controller: "P2StoreBundle:Store:delete" }
+    methods:  [POST, DELETE]

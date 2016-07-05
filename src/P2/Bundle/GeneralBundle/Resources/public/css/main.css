@@ -1,0 +1,77 @@
+.bg-grey {  /*background-color: rgb(129, 135, 143);*/}
+
+/**
+ * Firefox has some awkward fieldset styling involving width that interferes with the responsive table.
+ * This cannot be overriden without a Firefox-specific hack that isn't provided in Bootstrap. Hack is below
+ */
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+#back-toolbar{
+	max-height: 7em;
+	padding-top: .5px;
+	padding-bottom: .5px;
+}
+
+#back-toolbar ul {
+	margin: .5em -2.5em;
+}
+
+a:hover {text-decoration: none;}
+a:active {text-decoration: none;}
+
+.toolbaritem{
+	display: inline;
+}
+
+.margin-top-less{
+	margin-top: -.6em;
+}
+
+.margin-top-more{
+	margin-top: 1.1em;
+}
+
+.margin-right-more{
+margin-right: 2em;
+}
+
+.margin-left-more{
+	margin-left: 2em;
+}
+.margin-left-less{
+	margin-left: -1em;
+}
+.color-danger{
+	color:#C12E2A;
+}
+
+.color-primary{
+	color: #265A88;
+}
+
+.color-success{
+	color: #419641;
+}
+
+.padding-t-b-less{
+	padding-top: .4em;
+	padding-bottom: .4em;
+}
+
+.input-short{
+	max-width: 17em;
+}
+
+.ui-autocomplete-loading {
+	background: white url("../images/loading_16x16.gif") right top no-repeat;
+}
+
+/*jquery ui tooltips customization*/
+.ui-tooltip-content {
+    font-size:10pt;
+}
+
+/*STILL UNUSED*/
+label.control-label span { cursor: pointer; }

@@ -1,0 +1,95 @@
+{% extends 'P2UserBundle:Default:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        Details
+    </li>
+{% endblock %}
+
+{% block desktop -%}
+
+    {#flashbag messges #}
+    {{ include('P2UserBundle:Includes:flashbag.html.twig') }}
+
+    {# header and option for editting and deletting User #}
+    <div class="row">
+
+    <div class="col-md-6">
+        <h3>{{ entity.username }}</h3>
+    </div>
+
+    <div class="col-md-6 margin-top-more">
+    {# back #}
+    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('administrator') }}">Back to list</a>
+    {# edit #}
+    <a type="button" class="btn btn-sm btn-primary margin-right-more" href="{{ path('administrator_edit', { 'id': entity.id }) }}">Edit</a>
+    {# delete #}
+    <a type="button" class="btn btn-sm btn-danger margin-right-more" href="{{ path('administrator_show_delete', { 'id': entity.id }) }}">Delete</a>
+    </div>
+    </div>
+
+    <div class="row margin-left-more">
+        <p><strong>Id: </strong> {{ entity.id }}</p>
+    </div>
+
+    <div class="row margin-left-more">
+        <label>Email:</label> <a data-toggle="tooltip" title="Mail to '{{ entity.email }}'" href="mailto:{{ entity.email}}">{{ entity.email }}</a></p>
+    </div>
+
+    <div class="row margin-left-more">
+        <p><strong>Firstname: </strong> {{ entity.firstName }}</p>
+    </div>
+
+    {% if entity.middleName %}
+    <div class="row margin-left-more">
+        <p><strong>Middlename: </strong> {{ entity.middleName }}</p>
+    </div>
+    {% endif %}
+
+    <div class="row margin-left-more">
+        <p><label>Lastname:</label> {{ entity.lastname }}</p>
+    </div>
+
+    {% if entity.dni %}
+    <div class="row margin-left-more">
+       <p><label>DNI:</label> {{ entity.dni }}</p>
+    </div>
+    {% endif %}
+
+    {% if entity.picturePath %}
+    <div class="row margin-left-more">
+       <p>
+       <label>Picture:</label>
+       <img alt="Picture couldn't be loaded" src="{{ asset(entity.getPictureWebPath()) }}">
+       </p>
+    </div>
+    {% endif %}
+
+    {% if entity.dateOfBirth %}
+    <div class="row margin-left-more">
+       <p> <label>Date of birth:</label> {{ entity.dateOfBirth|date('Y/m/d') }}</p>
+    </div>
+    {% endif %}
+
+    {% if entity.address %}
+    <div class="row margin-left-more">
+        <p><label>Address:</label> {{ entity.address }}</p>
+    </div>
+    {% endif %}
+
+    <div class="row margin-left-more">
+        <p>
+        <label>Roles:</label>
+        {% for role in entity.roles %}
+        <a data-toggle="tooltip" title="Details of '{{ role.label }}'" href="{{ path('role_show', {'id': role.id}) }}"> {{ role.label }}</a>
+        {% endfor %}
+        </p>
+    </div>
+
+    {% block bottom %} {# user's specific content here#} {% endblock %}
+
+{% endblock %}
+
+
+{# unmarking as "active" breadcrumbs links#}

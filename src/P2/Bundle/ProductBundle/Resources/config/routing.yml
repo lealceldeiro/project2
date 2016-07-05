@@ -1,0 +1,3 @@
+p2_product_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: P2ProductBundle:Default:index }

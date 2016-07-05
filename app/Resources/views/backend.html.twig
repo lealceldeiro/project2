@@ -1,0 +1,407 @@
+{% extends '::base.html.twig' %}
+
+{% block bodybackground 'class="bg-grey"' %}
+
+{% block title %} Administration {% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+
+	<!--HEADER-->
+	<div class="row">
+		<!--logo/slogan-->
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+			<div class="row">
+			<!--Logo-->
+				<div class="hidden-xs hidden-sm col-md-6 col-lg-4">
+					<a href="{{ path('p2_general_homepage_backend') }}" >
+					<img class="img-rounded" alt="Logo" src="{{ asset('images/p2logo.png') }}" />
+					</a>
+				</div>
+				<!--Project Name/Slogan-->
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+					<h2>
+					<a href="{{ path('p2_general_homepage_backend') }}" >
+						Buy Now [dot] Com
+					</a>
+					</h2>
+					<h2 class="margin-left-more hidden-xs hidden-sm hidden-md"><small>Everything you need</small></h2>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="hidden-xs hidden-sm hidden-md col-lg-1">
+		<!--space between logo/slogan and user menu-->
+		</div>
+
+		<!--Admin menu-->
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<!--language, help-->
+			<div class="btn-group">
+				<div class="dropdown">
+				  <button id="lanSelectorlg" class="btn btn-default hidden-sm hidden-xs" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>English
+				    <span class="caret"></span>
+				  </button>
+				  <button id="lanSelectorsm" class="btn btn-default visible-sm visible-xs" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="lanSelector">
+				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Spanish</a></li>
+    				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">French</a></li>
+				  </ul>
+				</div>
+			</div>
+
+			<div class="btn-group">
+				<div class="dropdown">
+				  <button id="helplg" class="btn btn-default hidden-sm hidden-xs" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>Help
+				    <span class="caret"></span>
+				  </button>
+				  <button id="helpsm" class="btn btn-default visible-sm visible-xs" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="help">
+				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Support</a></li>
+    				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About</a></li>
+				  </ul>
+				</div>
+			</div>
+			<!--user-->
+			<div class="btn-group">
+				<button class="btn btn-default hidden-sm hidden-xs" type="button">
+  					Notifications <span class="badge">4</span>
+				</button>
+				<button class="btn btn-default visible-sm visible-xs" type="button">
+  					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;<span class="badge">4</span>
+				</button>
+			</div>
+			<div class="btn-group pull-right">
+				<div class="dropdown">
+				  <button id="useraccount" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+				    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>User
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="useraccount">
+				    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
+    				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign out</a></li>
+				  </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--NAVIGATION BAR-->
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span>
+						 <span class="icon-bar"></span>
+						 <span class="icon-bar"></span>
+						 <span class="icon-bar"></span>
+					</button> <!--a class="navbar-brand" href="#">Brand</a-->
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Store<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksStore = {route_new: 'store_new', route_list: 'store'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksStore}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Role<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksRole = {route_new: 'role_new', route_list: 'role'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksRole}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">User<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="{{ path('user_index') }}">All</a>
+								</li>
+
+								<li>
+									<a href="{{ path('administrator') }}">Administrator</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Address<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksAddress = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksAddress}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Product line<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksProdLine = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksProdLine}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Product<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksProdRes = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksProdRes}) }}
+								<li class="divider">
+								<li>
+								<a href="#">Product reservation</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Offer<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksOffer = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksOffer}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Delivery<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksDelivery = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksDelivery}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Credit card<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksCreditC = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksCreditC}) }}
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Payment<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								{% set linksPayment = {route_new: 'p2_role_index', route_list: 'p2_role_index'} %}
+								{{ include ('::include/actions.html.twig', {'links': linksPayment}) }}
+							</ul>
+						</li>
+					</ul>
+					<!--search-->
+					<form class="navbar-form navbar-left pull-right hidden-xs hidden-sm hidden-md" role="search">
+						<div class="form-group">
+							<input class="form-control" type="text" />
+						</div> 
+						<button type="submit" class="btn btn-default">
+							Search
+						</button>
+					</form>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+	<!--CONFIGURATION MENU AND WORKSPACE-->
+	<div class="row">
+
+		<!--CONF MENU-->
+		<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2">
+			<!-- firt submenu -->
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading1">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+			          Frontend
+			        </a>
+			      </h4>
+			    </div>
+
+			    <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Settings</a>
+			        <a href="#" class="list-group-item">Another</a>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading2">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+			          Extranet
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Link1</a>
+			        <a href="#" class="list-group-item">Link2</a>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading3">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+			          Backend
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Link4</a>
+			        <a href="#" class="list-group-item">Link7</a>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading4">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+			          Theme
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Link5</a>
+			        <a href="#" class="list-group-item">Link4</a>
+			      </div>
+			    </div>
+			  </div>
+		  	</div>
+
+		 	<!--Second submenu-->
+		 	<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading5">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+			          Configuration
+			        </a>
+			      </h4>
+			    </div>
+
+			    <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Settings</a>
+			        <a href="#" class="list-group-item">Another</a>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading6">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+			          Reports
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Link1</a>
+			        <a href="#" class="list-group-item">Link2</a>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading7">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+			          Stats
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Link4</a>
+			        <a href="#" class="list-group-item">Link7</a>
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="heading8">
+			      <h4 class="panel-title">
+			      <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+			        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+			          Modules
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+			      <div class="list-group">
+			        <a href="#" class="list-group-item">Link5</a>
+			        <a href="#" class="list-group-item">Link4</a>
+			      </div>
+			    </div>
+			  </div>
+		 	</div>
+
+			<!--SUPPORT ONLINE-->
+			<div class="hidden-xs hidden-sm">
+			<button type="button" class="btn btn-default btn-block">
+			<!--span class="glyphicon glyphicon-info-signs" aria-hidden="true"></span-->
+				Support online
+			</button>
+			</div>
+		</div>
+
+		<!--WORKSPACE-->
+		<div class="col-xs-12 col-sm-8 col-md-10 col-lg-10">
+			
+			<!--breadcrumb-->
+			{% block breadcrumbwrapper %}
+			<div class="row hidden-xs hidden-sm">
+				<div class="col-md-12">
+					<ul class="breadcrumb">
+					{% block breadcrumb %}
+							<li {% block home 'class="active"' %} >
+								Home
+							</li>
+						{% endblock %}
+					</ul>
+				</div>
+			</div>
+			{% endblock %}
+			
+			<div class="row">
+				<div class="col-md-12 margin-top-less">
+				{% block toolbarwrapper %}
+				<!--Toolbar-->
+				{% endblock %}
+        		</div>
+    		</div>
+			
+			<!--desktop-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+			        	<div class="col-md-12">
+							{% block desktop %}
+							{# working area here#}
+							{% endblock %}
+		    			</div>
+					</div>
+				</div>
+			</div>
+
+	</div>
+</div>
+
+{% endblock %}

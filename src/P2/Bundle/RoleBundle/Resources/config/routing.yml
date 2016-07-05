@@ -1,0 +1,7 @@
+p2_role_role:
+    resource: "@P2RoleBundle/Resources/config/routing/role.yml"
+    prefix:   /role
+
+p2_role_index:
+    path:     /
+    defaults: { _controller: P2RoleBundle:Default:index }

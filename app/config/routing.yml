@@ -1,0 +1,28 @@
+#friendsofsymfony bundle config
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+# my bundles routing
+p2_general:
+    resource: "@P2GeneralBundle/Resources/config/routing.yml"
+    prefix:   /
+
+p2_store:
+    resource: "@P2StoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+p2_offer:
+    resource: "@P2OfferBundle/Resources/config/routing.yml"
+    prefix:   /
+
+p2_product:
+    resource: "@P2ProductBundle/Resources/config/routing.yml"
+    prefix:   /
+
+p2_role:
+    resource: "@P2RoleBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+p2_user:
+    resource: "@P2UserBundle/Resources/config/routing.yml"
+    prefix:   /

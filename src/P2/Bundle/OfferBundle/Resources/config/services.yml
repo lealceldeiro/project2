@@ -1,0 +1,4 @@
+services:
+#    p2_offer.example:
+#        class: P2\Bundle\OfferBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

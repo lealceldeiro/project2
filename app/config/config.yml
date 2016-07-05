@@ -1,0 +1,218 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+    assets:
+#app
+        #images
+        logo:
+            inputs:
+                - %kernel.root_dir%/../app/Resources/public/images/p2logo.png
+            output: "images/p2logo.png"
+#jquery
+        jquery:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jquery/jquery.js
+#jquery ui
+        jquery_ui:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/jquery-ui.js
+                - %kernel.root_dir%/../vendor/components/jqueryui/jquery-ui.min.js
+        #themes
+        jquery_themes:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/jquery-ui.css
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/jquery-ui.min.css
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/theme.css
+            filters: [cssrewrite]
+        #images
+        jquery_gif1:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/animated-overlay.gif
+            output: "images/animated-overlay.gif"
+        jquery_png1:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png
+            output: "images/ui-bg_flat_0_aaaaaa_40x100.png"
+        jquery_png2:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_flat_75_ffffff_40x100.png
+            output: "images/ui-bg_flat_75_ffffff_40x100.png"
+        jquery_png3:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png
+            output: "images/ui-bg_glass_55_fbf9ee_1x400.png"
+        jquery_png4:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_glass_65_ffffff_1x400.png
+            output: "images/ui-bg_glass_65_ffffff_1x400.png"
+        jquery_png5:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_glass_75_dadada_1x400.png
+            output: "images/ui-bg_glass_75_dadada_1x400.png"
+        jquery_png6:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png
+            output: "images/ui-bg_glass_75_e6e6e6_1x400.png"
+        jquery_png7:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_glass_95_fef1ec_1x400.png
+            output: "images/ui-bg_glass_95_fef1ec_1x400.png"
+        jquery_png8:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+            output: "images/ui-bg_highlight-soft_75_cccccc_1x100.png"
+        jquery_png9:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-icons_222222_256x240.png
+            output: "images/ui-icons_222222_256x240.png"
+        jquery_png10:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-icons_2e83ff_256x240.png
+            output: "images/ui-icons_2e83ff_256x240.png"
+        jquery_png11:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-icons_454545_256x240.png
+            output: "images/ui-icons_454545_256x240.png"
+        jquery_png12:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-icons_888888_256x240.png
+            output: "images/ui-icons_888888_256x240.png"
+        jquery_png13:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jqueryui/themes/smoothness/images/ui-icons_cd0a0a_256x240.png
+            output: "images/ui-icons_cd0a0a_256x240.png"
+#bootstrap
+        bootstrap_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/js/bootstrap.js
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/css/bootstrap.css
+                - %kernel.root_dir%/../vendor/components/bootstrap/css/bootstrap-theme.css
+            filters: [cssrewrite]
+        #images
+        bootstrap_glyphicons_ttf:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/fonts/glyphicons-halflings-regular.ttf
+            output: "fonts/glyphicons-halflings-regular.ttf"
+        bootstrap_glyphicons_eot:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/fonts/glyphicons-halflings-regular.eot
+            output: "fonts/glyphicons-halflings-regular.eot"
+        bootstrap_glyphicons_svg:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/fonts/glyphicons-halflings-regular.svg
+            output: "fonts/glyphicons-halflings-regular.svg"
+        bootstrap_glyphicons_woff:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/fonts/glyphicons-halflings-regular.woff
+            output: "fonts/glyphicons-halflings-regular.woff"
+        bootstrap_glyphicons_woff2:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/bootstrap/fonts/glyphicons-halflings-regular.woff2
+            output: "fonts/glyphicons-halflings-regular.woff2"
+#custom css
+        custom_css:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/css/main.css
+            filters: [cssrewrite]
+#custom js
+        custom_js:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/js/main.js
+#datatables
+        #css
+        datatable_css:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/datatables.min.css
+        #js
+        datatable_js:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/datatables.min.js
+        #images
+        dt_png1:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/DataTables-1.10.11/images/sort_asc.png
+            output: "css/DataTables-1.10.11/images/sort_asc.png"
+        dt_png2:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/DataTables-1.10.11/images/sort_asc_disabled.png
+            output: "css/DataTables-1.10.11/images/sort_asc_disabled.png"
+        dt_png3:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/DataTables-1.10.11/images/sort_both.png
+            output: "css/DataTables-1.10.11/images/sort_both.png"
+        dt_png4:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/DataTables-1.10.11/images/sort_desc.png
+            output: "css/DataTables-1.10.11/images/sort_desc.png"
+        dt_png5:
+            inputs:
+                - %kernel.root_dir%/../src/P2/Bundle/GeneralBundle/Resources/public/datatable/DataTables-1.10.11/images/sort_desc_disabled.png
+            output: "css/DataTables-1.10.11/images/sort_desc_disabled.png"
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        # path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }

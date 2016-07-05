@@ -1,0 +1,46 @@
+{% extends 'P2RoleBundle:Role:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        Details
+    </li>
+{% endblock %}
+
+{% block desktop -%}
+
+    {#flashbag messges #}
+    {{ include('P2RoleBundle:Includes:flashbag.html.twig') }}
+
+    {# header and option for editting and deletting role #}
+    <div class="row">
+
+    <div class="col-md-6">
+        <h3>{{ entity.label }}</h3>
+    </div>
+
+    <div class="col-md-6 margin-top-more">
+    {# back #}
+    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('role') }}">Back to list</a>
+    {# edit #}
+    <a type="button" class="btn btn-sm btn-primary margin-right-more" href="{{ path('role_edit', { 'id': entity.id }) }}">Edit</a>
+    {# delete #}
+    <a type="button" class="btn btn-sm btn-danger margin-right-more" href="{{ path('role_show_delete', { 'id': entity.id }) }}">Delete</a>
+    </div>
+
+    </div>
+
+    <div class="row margin-left-more">
+        <p><strong>Id: </strong>{{ entity.id }}</p>
+    </div>
+
+     <div class="row margin-left-more">
+        <p><strong>Description: </strong> {{ entity.description }}</p>
+    </div>
+
+{% endblock %}
+
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block role '' %}

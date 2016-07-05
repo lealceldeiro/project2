@@ -1,0 +1,34 @@
+role:
+    path:     /
+    defaults: { _controller: "P2RoleBundle:Role:index" }
+
+role_show:
+    path:     /{id}/show
+    defaults: { _controller: "P2RoleBundle:Role:show" }
+
+role_new:
+    path:     /new
+    defaults: { _controller: "P2RoleBundle:Role:new" }
+
+role_create:
+    path:     /create
+    defaults: { _controller: "P2RoleBundle:Role:create" }
+    methods:  POST
+
+role_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "P2RoleBundle:Role:edit" }
+
+role_update:
+    path:     /{id}/update
+    defaults: { _controller: "P2RoleBundle:Role:update" }
+    methods:  [POST, PUT]
+
+role_show_delete:
+    path:     /{id}/showdelete
+    defaults: { _controller: "P2RoleBundle:Role:showDelete" }
+
+role_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "P2RoleBundle:Role:delete" }
+    methods:  [POST, DELETE]

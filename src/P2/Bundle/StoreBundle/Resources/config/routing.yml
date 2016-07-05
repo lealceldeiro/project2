@@ -1,0 +1,3 @@
+p2_store_store:
+    resource: "@P2StoreBundle/Resources/config/routing/store.yml"
+    prefix:   /store

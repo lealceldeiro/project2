@@ -1,0 +1,115 @@
+{% extends '::backend.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li {% block user 'class="active"' %}>
+        User
+    </li>
+{% endblock %}
+
+
+{% block toolbarwrapper %}
+
+    <div class="panel panel-default ">
+        <div id="back-toolbar" class="panel-body">
+                <ul>
+                {% block toolbar %}
+                {# all command buttons related to operation in the working area here#}
+                    <li class="toolbaritem">
+                        <a class="color-success" data-toggle="tooltip" title="{% block new %} New user {% endblock %}" href="{{ path('administrator_new') }}">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add
+                        </a>
+                    </li>
+                {% endblock %}
+                </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block desktop -%}
+    {% if entities is not empty %}
+    <div class="table-responsive">
+        <table class="table table-condensed table-striped table-hover p2datatable">
+            <thead>
+                <tr>
+                {#0#}<th class="hidden-xs"></th>
+                {#1#}<th class="hidden-xs hidden-sm hidden-md">Id</th>
+	            {#2#}<th>Username</th>
+	            {#3#}<th class="hidden-xs hidden-sm hidden-md">Full name</th>
+	            {#4#}<th class="hidden-xs hidden-sm hidden-md">DNI</th>
+	            {#5#}<th class="hidden-xs hidden-sm hidden-md">User type</th>
+	            {#6#}<th class="hidden-xs hidden-sm">Email</th>
+	            {#7#}<th class="hidden-xs hidden-sm">Active</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                {# 0 -- ACTIONS #}
+                	<td class="hidden-xs">
+                		<div>
+                			{% set user_type = entity.gettype|lower %}
+                			{# get specific edit route, i.e.:#} 
+                        	{% set route_edit = user_type ~ "_edit"%} {# get specific edit route, i.e.: customer_edit #}
+                            <a class="color-primary" data-toggle="tooltip" title="Edit user's data" href="{{ path(route_edit, { 'id': entity.id }) }}">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            {% set route_delete = user_type ~ "_show_delete"%} {# get specific delete route, i.e.: customer_delete #}
+                            <a class="color-danger" data-toggle="tooltip" title="Delete user's data" href="{{ path(route_delete, { 'id': entity.id }) }}">
+                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                	</td>
+                {# 1 -- ID #}
+                    <td class="hidden-xs hidden-sm hidden-md">
+                    {{ entity.id }}
+                    </td>
+                {# 2 -- USERNAME #}
+                    <td>
+                    	{% set route_show = user_type ~ "_show"%} {# get specific show route, i.e.: customer_show #}
+                        <a data-toggle="tooltip" title="Show details" href="{{ path(route_show, { 'id': entity.id }) }}">{{ entity.username }}</a>
+                    </td>
+                {# 3 -- FULL NAME #}
+                    <td class="hidden-xs hidden-sm hidden-md">
+                    	{{ entity.firstName ~ ' ' ~ entity.middleName ~ ' ' ~ entity.lastname}}
+                    </td>
+                {# 4 -- DNI #}
+                    <td class="hidden-xs hidden-sm hidden-md">
+                    {% if entity.dni %}{{ entity.dni }}{% endif %}
+                    </td>
+                {# 5 -- User Type #}
+                    <td class="hidden-xs hidden-sm hidden-md">
+                    	{{ entity.getType }}
+                    </td>
+                {# 6 -- Email #}
+                    <td class="hidden-xs hidden-sm">
+                    {{ entity.email }}
+                    </td>
+                {# 7 -- ACTIVE? #}
+                	<td class="hidden-xs hidden-sm">
+                    {% set active = entity.active ? "Yes": "No" %}
+                	{{ active }}
+                	</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="hidden-xs hidden-sm col-md-12">
+        <h3><span class="label label-warning">There isn't any user registered yet</span></h3>
+    </div>
+    {#small#}
+    <div class="hidden-xs col-sm-12 hidden-md hidden-lg">
+        <h4><span class="label label-warning">There isn't any user registered yet</span></h4>
+    </div>
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+        <span class="label label-warning">There isn't any user registered yet</span>
+    </div>
+    {% endif %}
+{% endblock %}
+
+    {# unmarking as "active" breadcrumbs links#}
+
+{% block home '' %}

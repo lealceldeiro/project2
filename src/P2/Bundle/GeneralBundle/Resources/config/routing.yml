@@ -1,0 +1,7 @@
+p2_general_homepage_backend:
+    path:     /
+    defaults: { _controller: P2GeneralBundle:Default:indexBackend }
+
+general_404:
+    path:     /general_404
+    defaults: { _controller: P2GeneralBundle:Default:notFound }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Buy Now [dot] Com | {% block title %}Welcome{% endblock %}</title>
+
+        <meta name="description" content="An Asiel's Project">
+        <meta name="author" content="Asiel Leal Celdeiro at <lealceldeiro@gmail.com> ">
+
+        {# jquery, bootstrap js, jquery-ui, datatable_js, custom_js #}
+        {% javascripts '@jquery' '@bootstrap_js' '@jquery_ui' '@datatable_js' '@custom_js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        
+        {# bootstrap, jquery-ui css, datatable_css, custom_css #}
+        {% stylesheets '@bootstrap_css' '@jquery_themes' '@datatable_css' '@custom_css' %}
+            <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+
+        {# Loading friendsofsymfony bundle #}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+        {% block stylesheets %}{% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body {% block bodybackground ''%}>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

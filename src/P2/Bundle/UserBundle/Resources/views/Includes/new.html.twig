@@ -1,0 +1,272 @@
+{% extends 'P2UserBundle:Default:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        New
+    </li>
+{% endblock %}
+
+{% block toolbarwrapper %}
+{% endblock %}
+
+{% block desktop -%}
+
+	{#flashbag messges #}
+	{{ include('P2UserBundle:Includes:flashbag.html.twig') }}
+   
+    {{ form_start(form, { 'attr': {'role': 'form', 'class': 'form-horizontal'}} ) }}
+
+	{# buttons #}
+    <div>
+	    {# back #}
+	    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('administrator') }}">Back to list</a>
+
+	    {# submit #}
+		  {{ form_label(form.submit) }}
+		  {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-sm btn-primary margin-right-more'} }) }}
+
+		  {# active? #} 
+		  {{ form_label(form.active) }}
+		  {{ form_widget(form.active) }}
+    </div>
+
+    <div class="row margin-top-more">
+
+	    <!--left column-->
+	    <div class="col-sm-4">
+			
+
+		    {# username #}
+		    		{% if (form_errors(form.username)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less margin-top-more" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.username) }}
+					</div>
+					{% endif %}
+
+			  <div class="form-group {% if (form_errors(form.username)) %} has-error {% endif %}">
+				{{ form_label(form.username) }}
+				<div class="col-sm-10">
+					{{ form_widget(form.username) }}
+				</div>
+			  </div>
+
+			{# password #}
+					{% if (form_errors(form.password.first)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.password.first) }}
+					</div>
+					{% endif %}
+
+			  <div class="form-group {% if (form_errors(form.password.first)) %} has-error {% endif %}">
+				  {{ form_label(form.password.first) }}
+					<div class="col-sm-10">
+				  		{{ form_widget(form.password.first) }}
+				  	</div>
+					  {{ form_label(form.password.second) }}
+					  <div class="col-sm-10 margin-top-more">
+					  	{{ form_widget(form.password.second) }}
+				  </div>
+			  	  
+			  </div>
+
+			{# email #}
+					{% if (form_errors(form.email)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.email) }}
+					</div>
+					{% endif %}
+
+			<div class="form-group {% if (form_errors(form.email)) %} has-error {% endif %}">
+				{{ form_label(form.email) }}
+				<div class="col-sm-10">
+					{{ form_widget(form.email) }}
+				</div>
+			</div>
+
+			{# Firstname #}
+					{% if (form_errors(form.firstName)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.firstName) }}
+					</div>
+					{% endif %}
+
+			<div class="form-group {% if (form_errors(form.firstName)) %} has-error {% endif %}">
+				{{ form_label(form.firstName) }}
+				<div class="col-sm-10">
+					{{ form_widget(form.firstName) }}
+				</div>
+			</div>
+
+			{# Lastname #}
+					{% if (form_errors(form.lastname)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.lastname) }}
+					</div>
+					{% endif %}
+
+			<div class="form-group {% if (form_errors(form.lastname)) %} has-error {% endif %}">
+				{{ form_label(form.lastname) }}
+				<div class="col-sm-10">
+					{{ form_widget(form.lastname) }}
+				</div>
+			</div>
+
+			{% block left_column %} {# user's specific content here#} {% endblock %}
+
+		</div>		
+
+		<!--right column -->
+		<div class="col-sm-8">
+
+			<!--first-->
+			<div class="col-sm-6">
+
+				{# Middlename #}
+					{% if (form_errors(form.middleName)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.middleName) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(form.middleName)) %} has-error {% endif %}">
+					{{ form_label(form.middleName) }}
+					<div class="col-sm-10">
+						{{ form_widget(form.middleName) }}
+					</div>
+				</div>
+
+				{# DNI #}
+					{% if (form_errors(form.dni)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.dni) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(form.dni)) %} has-error {% endif %}">
+					{{ form_label(form.dni) }}
+					<div class="col-sm-10">
+						{{ form_widget(form.dni) }}
+					</div>
+				</div>
+
+				{# Date of birth #}
+					{% if (form_errors(form.dateOfBirth)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.dateOfBirth) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(form.dateOfBirth)) %} has-error {% endif %}">
+					{{ form_label(form.dateOfBirth) }}
+					<div class="col-sm-10">
+						{{ form_widget(form.dateOfBirth, { 'attr': {'id': 'date_of_birth'}} ) }}
+					</div>
+				</div>
+
+					{% if (form_errors(form.address)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.address) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(form.address)) %} has-error {% endif %}">
+					{{ form_label(form.address) }}
+					<div class="col-sm-10">
+						{{ form_widget(form.address) }}
+					</div>
+				</div>
+
+				{# PICTURE #}
+					{% if (form_errors(form.pictureFile)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.pictureFile) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(form.pictureFile)) %} has-error {% endif %}">
+					{{ form_label(form.pictureFile) }}
+					<div class="col-sm-10">
+						{{ form_widget(form.pictureFile) }}
+						<p class="help-block pull-right input-short">Click here to choose an image from your computer.</p>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<!--second-->
+			<div class="col-sm-6"> 
+				
+					{# Roles #}
+
+					{% if (form_errors(form.roles)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.roles) }}
+					</div>
+					{% endif %}
+
+				<div class="form-group {% if (form_errors(form.roles)) %} has-error {% endif %}">
+					{{ form_label(form.roles) }}
+					<div class="col-sm-10">
+						{{ form_widget(form.roles) }}
+					</div>
+				</div>				
+			</div>
+
+				{% block right_column %} {# user's specific content here#} {% endblock %}
+		</div>
+
+	</div>
+
+	{# buttons #}
+    <div>
+	    {# back #}
+	    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('administrator') }}">Back to list</a>
+
+	    {# submit #}
+		{{ form_label(form.submit2) }}
+		{{ form_widget(form.submit2, { 'attr': {'class': 'btn btn-sm btn-primary'} }) }}
+    </div>
+
+	{{ form_end(form) }}
+
+{% endblock %}
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block user '' %}

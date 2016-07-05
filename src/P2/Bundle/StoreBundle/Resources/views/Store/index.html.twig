@@ -1,0 +1,83 @@
+{% extends '::backend.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li {% block store 'class="active"' %}>
+        Store
+    </li>
+{% endblock %}
+
+
+{% block toolbarwrapper %}
+
+    <div class="panel panel-default ">
+        <div id="back-toolbar" class="panel-body">
+                <ul>
+                {% block toolbar %}
+                {# all command buttons related to operation in the working area here#}
+                    <li class="toolbaritem">
+                        <a class="color-success" data-toggle="tooltip" title="New store" href="{{ path('store_new') }}">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add
+                        </a>
+                    </li>
+                {% endblock %}
+                </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block desktop -%}
+
+    {% if entities is not empty %}
+    <div class="table-responsive">
+        <table class="table table-condensed table-striped table-hover p2datatable">
+            <thead>
+                <tr>
+                    <th class="hidden-xs"></th>
+                    <th class="hidden-xs hidden-sm hidden-md">Id</th>
+                    <th>Name</th>
+                    <th class="hidden-xs hidden-sm hidden-md">Store User</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td class="hidden-xs">
+                    <div>
+                            <a class="color-primary" data-toggle="tooltip" title="Edit store" href="{{ path('store_edit', { 'id': entity.id }) }}">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+
+                            <a class="color-danger" data-toggle="tooltip" title="Delete store" href="{{ path('store_show_delete', { 'id': entity.id }) }}">
+                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="hidden-xs hidden-sm hidden-md">{{ entity.id }}</td>
+                    <td>
+                        <a data-toggle="tooltip" title="Show details" href="{{ path('store_show', { 'id': entity.id }) }}">{{ entity.name }}</a>
+                    </td>
+                    <td class="hidden-xs hidden-sm hidden-md">{{ entity.storeUser }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    {# large and medium#}
+    <div class="hidden-xs hidden-sm col-md-12">
+        <h3><span class="label label-warning">There isn't any store registered yet</span></h3>
+    </div>
+    {#small#}
+    <div class="hidden-xs col-sm-12 hidden-md hidden-lg">
+        <h4><span class="label label-warning">There isn't any store registered yet</span></h4>
+    </div>
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+        <span class="label label-warning">There isn't any store registered yet</span>
+    </div>
+    {% endif %}
+{% endblock %}
+
+    {# unmarking as "active" breadcrumbs links#}
+
+{% block home '' %}

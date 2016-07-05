@@ -1,0 +1,3 @@
+p2_offer_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: P2OfferBundle:Default:index }

@@ -1,0 +1,90 @@
+{% extends 'P2StoreBundle:Store:index.html.twig' %}
+
+{% block breadcrumb -%}
+{{ parent() }}
+    <li class="active">
+        New
+    </li>
+{% endblock %}
+
+{% block toolbarwrapper %}
+{% endblock %}
+
+{% block desktop -%}
+
+	{#flashbag messges #}
+	{{ include('P2StoreBundle:Includes:flashbag.html.twig') }}
+   
+    {{ form_start(form, { 'attr': {'role': 'form', 'class': 'form-horizontal'}} ) }}
+
+    <div>
+	    {# back #}
+	    <a type="button" class="btn btn-sm btn-default margin-right-more" href="{{ path('store') }}">Back to list</a>
+
+	    {# submit #}
+		  {{ form_label(form.submit) }}
+		  {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-sm btn-primary'} }) }}
+    </div>
+
+    {# store name#}
+    				{% if (form_errors(form.name)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less margin-top-more" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.name) }}
+					</div>
+					{% endif %}
+
+	  <div class="form-group {% if (form_errors(form.name)) %} has-error {% endif %}">
+		  {{ form_label(form.name) }}
+		  <div class="col-sm-10 margin-top-more">
+		  	{{ form_widget(form.name) }}
+		  </div>
+	  </div>
+
+	{# store user#}
+					{% if (form_errors(form.storeUser)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.storeUser) }}
+					</div>
+					{% endif %}
+	  <div class="form-group {% if (form_errors(form.storeUser)) %} has-error {% endif %}">
+		  {{ form_label(form.storeUser) }}
+		  <div class="col-sm-10 margin-top-more">
+		  	{{ form_widget(form.storeUser) }}
+		  </div>
+	  </div>
+
+	{# store password#}
+					{% if (form_errors(form.password.first)) %}
+				  	<div class="alert alert-danger alert-dismissible padding-t-b-less" role="alert">
+					  	<button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					  	</button>
+					  	{{ form_errors(form.password.first) }}
+					</div>
+					{% endif %}
+	  <div class="form-group {% if (form_errors(form.password.first)) %} has-error {% endif %}">
+		  	{{ form_label(form.password.first) }}
+			<div class="col-sm-10 margin-top-more">
+			  	{{ form_widget(form.password.first) }}
+			</div>
+		  <div>
+			{{ form_label(form.password.second) }}
+			<div class="col-sm-10 margin-top-more">
+			  	{{ form_widget(form.password.second) }}
+			</div>
+		  </div>
+	  </div>
+
+	{{ form_end(form) }}
+
+{% endblock %}
+
+{# unmarking as "active" breadcrumbs links#}
+
+{% block store '' %}

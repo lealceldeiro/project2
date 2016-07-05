@@ -1,0 +1,34 @@
+administrator:
+    path:     /
+    defaults: { _controller: "P2UserBundle:Administrator:index" }
+
+administrator_show:
+    path:     /{id}/show
+    defaults: { _controller: "P2UserBundle:Administrator:show" }
+
+administrator_new:
+    path:     /new
+    defaults: { _controller: "P2UserBundle:Administrator:new" }
+
+administrator_create:
+    path:     /create
+    defaults: { _controller: "P2UserBundle:Administrator:create" }
+    methods:  POST
+
+administrator_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "P2UserBundle:Administrator:edit" }
+
+administrator_update:
+    path:     /{id}/update
+    defaults: { _controller: "P2UserBundle:Administrator:update" }
+    methods:  [POST, PUT]
+
+administrator_show_delete:
+    path:     /{id}/showdelete
+    defaults: { _controller: "P2UserBundle:Administrator:showDelete" }
+
+administrator_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "P2UserBundle:Administrator:delete" }
+    methods:  [POST, DELETE]
