@@ -3,7 +3,7 @@
 namespace P2\Bundle\GeneralBundle\Util;
 
 /**
-* Contains methods useful
+* Contains useful methods
 */
 class Util
 {

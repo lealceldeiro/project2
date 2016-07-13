@@ -55,7 +55,7 @@ class Delivery
     private $reservations;
 
     /**
-     * @var P2\Bundle\UserBundle\Entity\Seller
+     * @var \P2\Bundle\UserBundle\Entity\Seller
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\Seller", inversedBy="deliveries")
      * @ORM\JoinColumn(name="seller_id", referencedColumnName="id")
@@ -63,7 +63,7 @@ class Delivery
     private $seller;
 
     /**
-     * @var P2\Bundle\UserBundle\Entity\DeliveryMan
+     * @var \P2\Bundle\UserBundle\Entity\DeliveryMan
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\DeliveryMan", inversedBy="deliveries")
      * @ORM\JoinColumn(name="delivery_man_id", referencedColumnName="id")

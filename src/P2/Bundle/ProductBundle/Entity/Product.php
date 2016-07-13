@@ -64,7 +64,7 @@ class Product
     private $productLine;
 
     /**
-     * @var P2\Bundle\UserBundle\Entity\ProductManager
+     * @var \P2\Bundle\UserBundle\Entity\ProductManager
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\ProductManager", inversedBy="products")
      * @ORM\JoinColumn(name="product_manager_id", referencedColumnName="id")

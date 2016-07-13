@@ -32,7 +32,7 @@ class ProductReservation
     private $productAmount;
 
     /**
-     * @var P2\Bundle\ProductBundle\Entity\Product
+     * @var \P2\Bundle\ProductBundle\Entity\Product
      *
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="reservations")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
@@ -40,7 +40,7 @@ class ProductReservation
     private $product;
 
     /**
-     * @var P2\Bundle\UserBundle\Entity\Customer
+     * @var \P2\Bundle\UserBundle\Entity\Customer
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\Customer", inversedBy="reservations")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")

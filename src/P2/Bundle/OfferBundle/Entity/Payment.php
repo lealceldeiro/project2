@@ -49,7 +49,7 @@ class Payment
     private $change = 0;
 
     /**
-     * @var P2\Bundle\UserBundle\Entity\Customer
+     * @var \P2\Bundle\UserBundle\Entity\Customer
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\Customer", inversedBy="payments")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")

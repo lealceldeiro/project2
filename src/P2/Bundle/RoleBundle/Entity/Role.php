@@ -127,7 +127,7 @@ class Role
     }
 
     /**
-     * @var Get \P2\Bundle\RoleBundle\Entity\Role
+     * @var \P2\Bundle\RoleBundle\Entity\Role
      *
      * Returns an instance of this class
      * This method is useful when retrieving entities of

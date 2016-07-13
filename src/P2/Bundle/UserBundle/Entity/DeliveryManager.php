@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class DeliveryManager extends User
 {
     /**
-     * @var P2\Bundle\UserBundle\Entity\ProductLineManager
+     * @var \P2\Bundle\UserBundle\Entity\ProductLineManager
      *
      * @ORM\ManyToOne(targetEntity="ProductLineManager", inversedBy="deliveryManagers")
      * @ORM\JoinColumn(name="product_line_manager_id", referencedColumnName="id")

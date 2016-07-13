@@ -180,7 +180,7 @@ class Store
     }
 
     /**
-     * @var Get \P2\Bundle\StoreBundle\Entity\Store
+     * @var \P2\Bundle\StoreBundle\Entity\Store
      *
      * Returns an instance of this class
      * This method is useful when retrieving entities of

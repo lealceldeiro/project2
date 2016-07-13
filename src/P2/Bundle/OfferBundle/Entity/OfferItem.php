@@ -47,7 +47,7 @@ class OfferItem
     private $description = null;
 
     /**
-    * @var P2\Bundle\ProductBundle\Entity\Product
+    * @var \P2\Bundle\ProductBundle\Entity\Product
     *
     * @ORM\ManyToOne(targetEntity="P2\Bundle\ProductBundle\Entity\Product", inversedBy="offerItems")
     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")

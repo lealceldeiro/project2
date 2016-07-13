@@ -41,7 +41,7 @@ class CreditCard
     private $creditCardNumber;
 
     /**
-     * @var P2\Bundle\Userbundle\Entity\Customer
+     * @var \P2\Bundle\UserBundle\Entity\Customer
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\Customer", inversedBy="creditCards")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")

@@ -146,7 +146,7 @@ class User
     protected $address;
 
     /**
-     * @var P2\Bundle\StoreBundle\Entity\Store
+     * @var \P2\Bundle\StoreBundle\Entity\Store
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\StoreBundle\Entity\Store", inversedBy="users")
      * @ORM\JoinColumn(name="store_id", referencedColumnName="id")
@@ -571,7 +571,7 @@ class User
     /**
      * Set picturePath
      *
-     * @param string $picturePath
+     * @param string $picturePathParam
      * @return User
      */
     public function setPicturePath($picturePathParam)

@@ -38,7 +38,7 @@ class Offer
     private $photoRoute = null;
 
     /**
-     * @var P2\Bundle\UserBundle\Entity\Seller
+     * @var \P2\Bundle\UserBundle\Entity\Seller
      *
      * @ORM\ManyToOne(targetEntity="P2\Bundle\UserBundle\Entity\Seller", inversedBy="offers")
      * @ORM\JoinColumn(name="seller_id", referencedColumnName="id")
